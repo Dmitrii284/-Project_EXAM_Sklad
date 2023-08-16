@@ -8,7 +8,7 @@
 #include<map>
 #include<memory>
 
-class Cell
+class Cell // Ячейка
 {
 private:
 	std::map<uint32_t, std::shared_ptr<Tovar>> m_Tovars;
@@ -50,13 +50,42 @@ public:
 	{
 		for (const auto& tovar : m_Tovars)
 		{
-			std::cout << "Tovar: " << std::endl;
-			std::cout << "----------TOVAR_BEGIN----------" << std::endl;
-			std::cout << "Id: " << tovar.first << ": " << std::endl;
+			std::cout << "Tovar's id " << tovar.first << ':' << std::endl;
 			tovar.second->ShowTovar();
-			std::cout << "----------TOVAR_END----------" << std::endl;
 		}
 	}
+
+	std::shared_ptr<Tovar>SearchByID(uint32_t id)
+	{
+		auto it = m_Tovars.find(id);
+		if (it == m_Tovars.end())
+			return nullptr;
+		return it->second;
+	}
+
+	std::shared_ptr<Tovar>SearchByName(const std::string& name)
+	{
+		for (const auto& it : m_Tovars)
+		{
+			if (it.second->GetName() == name)
+				return it.second;
+		}
+		return nullptr;
+	}
+
+	void ShipTovar(uint32_t id)// Функция огрузки товара по id
+	{
+		auto tovar = SearchByID(id);
+		tovar->SetExitTime();
+		m_Tovars.erase(tovar->GetId());
+	}
+	void ShipTovar(const std::string& name)// Функция огрузки товара по name
+	{
+		auto tovar = SearchByName(name);
+		tovar->SetExitTime();
+		m_Tovars.erase(tovar->GetId());//Плучаем по GetId() id товара  и удаляем его.
+	}
+
 };
 
 
