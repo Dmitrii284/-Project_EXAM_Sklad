@@ -47,7 +47,7 @@ int main()
 	std::cout << "6 - Вывод списка товара на выбранном стеллаже." << std::endl;
 	std::cout << "7 - ВЫХОД!!!." << std::endl;
 	std::cout << "|||||||||||||||||||||||||||||||||||||||||||" << std::endl;
-	std::cout << "Введите цифру -> " << std::endl;
+	std::cout << "Введите цифру выбранного действия -> ";
 	std::cin >> choise;
 
 	switch (choise)
@@ -60,31 +60,32 @@ int main()
 		std::cout << "Внимание! Стеллаж вмещает до 1000 кг" << std::endl;
 		std::cout << "Название  товара->";
 		std::cin >> nameProduct;
+
 		std::cout << "Количество  товара->";
 		std::cin >> quantity;
 		
 		std::cout << "Вес товара->";
-		std::cin >> weight;
-		while (!isValide) {
+		std::cin >> weight;		
+
+		 while (!isValide) {
 			if (weight <= 1000) {
 				isValide = true;
-			}
-			else {
+			}else {
 				std::cout << "Слишком большой вес товара!!!";
-				continue;
+				return isValide;
 			}
-		}
-		std::cout << "Выберите букву стеллаж для размещения товара->" << std::endl;
+		 }
+		std::cout << "Выберите букву стеллаж для размещения товара" << std::endl;
 		std::cout << "А - букву стеллажа" << std::endl;
 		std::cout << "В - букву стеллажа" << std::endl;
 		std::cout << "С - букву стеллажа" << std::endl;
-		std::cout << "Введите букву стеллажа->" << std::endl;		
+		std::cout << "Введите букву стеллажа->";		
 		std::cin >> letterShalf;
 		if (letterShalf != 'а' || letterShalf != 'А' || letterShalf != 'в' || letterShalf != 'В' || letterShalf != 'с' || letterShalf != 'С') {
 			std::cout << "Неверно указали букву стеллажа!!!";
-			return false;
+			return isValide;
 		}else
-		std::cout << "Выберите номер стеллажа->" << std::endl;
+		std::cout << "Выберите номер стеллажа->";
 		std::cout << "10 - номер стеллажа" << std::endl;
 		std::cout << "20 - номер стеллажа" << std::endl;
 		std::cout << "30 - номер стеллажа" << std::endl;
@@ -92,8 +93,7 @@ int main()
 		if (numShelf != 10 || numShelf != 20 || numShelf != 30) {
 			std::cout << "Неверно указали номер стеллажа!!!";
 			return false;
-		}else
-	
+		}else	
 		break;
 	case 3 :
 		break;
