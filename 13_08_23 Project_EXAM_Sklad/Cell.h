@@ -41,11 +41,6 @@ public:
 		return m_Tovars.find(id)->second;
 	}
 
-	/*main
-	{
-		Serch(10)->ShowTovar();
-	}*/
-
 	void ShowTovars()
 	{
 		for (const auto& tovar : m_Tovars)
@@ -67,9 +62,9 @@ public:
 	{
 		for (const auto& it : m_Tovars)
 		{
-			if (it.second->GetName() == name)
+			if (it.second->GetName() == name)			
 				return it.second;
-		}
+		}		
 		return nullptr;
 	}
 
@@ -85,11 +80,7 @@ public:
 		tovar->SetExitTime();
 		m_Tovars.erase(tovar->GetId());//Плучаем по GetId() id товара  и удаляем его.
 	}
-
 };
-
-
-
 
 #endif // !_CELL_H_
 
