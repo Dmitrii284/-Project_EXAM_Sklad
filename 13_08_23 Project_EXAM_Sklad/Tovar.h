@@ -14,7 +14,7 @@ class Tovar
 private:
 	std::string m_Name;
 	float m_Weight;
-	uint32_t m_Id;
+	int m_Id;
 	std::string m_CellName{" "};
 	std::string m_EnterTime;
 	std::string m_ExitTime;
@@ -75,7 +75,7 @@ public:
 
 	float GetWeight() { return m_Weight; }
 
-	uint32_t GetId() { return m_Id; }
+	int GetId() { return m_Id; }
 
 	std::string GetName() { return m_Name; }
 

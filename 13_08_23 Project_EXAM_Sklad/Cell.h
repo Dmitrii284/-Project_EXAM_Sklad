@@ -11,13 +11,13 @@
 class Cell // Ячейка
 {
 private:
-	std::map<uint32_t, std::shared_ptr<Tovar>> m_Tovars;
-	uint32_t m_MaxWeight;
-	uint32_t m_CurrentWeight{ 0 };
+	std::map<int, std::shared_ptr<Tovar>> m_Tovars;
+	int m_MaxWeight;
+	int m_CurrentWeight{ 0 };
 	char m_UniqueLetter;
-	uint16_t m_UniqueNumber;
+	int m_UniqueNumber;
 public:
-	Cell(uint32_t maxWeight, char uniqueLetter, uint16_t uniqueNumber) :
+	Cell(int maxWeight, char uniqueLetter, int uniqueNumber) :
 		m_MaxWeight{ maxWeight }, m_UniqueLetter{ uniqueLetter }, m_UniqueNumber{ uniqueNumber }{ }
 
 	bool AddTovar( std::shared_ptr<Tovar>& tovar)
@@ -36,7 +36,7 @@ public:
 		std::cout << m_UniqueLetter + std::to_string(m_UniqueNumber) << std::endl;
 	}
 
-	std::shared_ptr<Tovar>& Search(uint32_t id)
+	std::shared_ptr<Tovar>& Search(int id)
 	{
 		return m_Tovars.find(id)->second;
 	}
@@ -50,7 +50,7 @@ public:
 		}
 	}
 
-	std::shared_ptr<Tovar>SearchByID(uint32_t id)
+	std::shared_ptr<Tovar>SearchByID(int id)
 	{
 		auto it = m_Tovars.find(id);
 		if (it == m_Tovars.end())
@@ -68,7 +68,7 @@ public:
 		return nullptr;
 	}
 
-	void ShipTovar(uint32_t id)// Функция огрузки товара по id
+	void ShipTovar(int id)// Функция огрузки товара по id
 	{
 		auto tovar = SearchByID(id);
 		tovar->SetExitTime();

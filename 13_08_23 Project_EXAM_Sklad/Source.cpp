@@ -24,11 +24,11 @@ int main()
 
 	int choise{ 0 };
 	int exit{ 8 };
-	uint32_t id{ 0 };
+	int id{ 0 };
 	std::string nameProduct;
 	float quantity;
 	char letterShalf;
-	uint16_t numShelf;	
+	int numShelf;	
 	bool isValide = false;
 
 
