@@ -168,41 +168,6 @@ int main()
 		std::cout << "Вы ввели не верную цифру!!!" << std::endl;
 		break;	
 	}
-
-
-	//cell.ShowTovars();
-	//cell.ShipTovar("Morkov1"); // Удаляем по имени товар. 
-	//cell.ShipTovar(morkov2->GetId()); //Удаляем по ID товар со склада
-
-	/*auto x = (uint16_t)(200 << 8 | 100);
-
-	std::cout << x;
-	*/
-
-	/*
-	#include <iostream>
-
-int main() {
-	int number;
-	bool isValid = false;
-
-	while (!isValid) {
-		std::cout << "Введите номер: ";
-		std::cin >> number;
-
-		if (number == 1 || number == 2 || number == 3 || number == 4 || number == 5) {
-			isValid = true;
-		} else {
-			std::cout << "Неверный номер, повторите ввод: ";
-			continue;
-		}
-	}
-
-	std::cout << "Вы ввели правильный номер: " << number << std::endl;
-
-	return 0;
-}
-	*/
-
+	
 	return 0;
 }
