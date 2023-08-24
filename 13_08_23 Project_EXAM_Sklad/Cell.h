@@ -8,6 +8,7 @@
 #include<map>
 #include<memory>
 
+
 class Cell // Ячейка
 {
 private:
@@ -16,9 +17,25 @@ private:
 	int m_CurrentWeight{ 0 };
 	char m_UniqueLetter;
 	int m_UniqueNumber;
+	static std::vector<Cell*> m_Cells;
 public:
 	Cell(int maxWeight, char uniqueLetter, int uniqueNumber) :
-		m_MaxWeight{ maxWeight }, m_UniqueLetter{ uniqueLetter }, m_UniqueNumber{ uniqueNumber }{ }
+		m_MaxWeight{ maxWeight }, m_UniqueLetter{ uniqueLetter }, m_UniqueNumber{ uniqueNumber }
+	{ 
+		m_Cells.push_back(this);
+	}
+
+	static Cell* FindCell(std::string& str)
+	{
+		for (auto& it : m_Cells)
+		{
+			std::string cell_id = it->m_UniqueLetter + std::to_string(it->m_UniqueNumber);
+
+			if(cell_id == str)
+				return it;
+		}
+		return nullptr;
+	}
 
 	bool AddTovar( std::shared_ptr<Tovar>& tovar)
 	{
@@ -29,6 +46,14 @@ public:
 		m_Tovars.insert(std::make_pair(tovar->GetId(), tovar));
 		tovar->SetCell(m_UniqueLetter + std::to_string(m_UniqueNumber));
 		return true;	
+	}
+
+	static void ShowAllTovarsInTheCell()
+	{
+		for (const auto& it : m_Cells)
+		{
+			it->ShowTovars();
+		}
 	}
 
 	void ShowId()
@@ -67,12 +92,16 @@ public:
 		}		
 		return nullptr;
 	}
-
+	
 	void ShipTovar(int id)// Функция огрузки товара по id
 	{
 		auto tovar = SearchByID(id);
 		tovar->SetExitTime();
+		tovar->ShowTovar();
 		m_Tovars.erase(tovar->GetId());
+		std::cout << "Товар отгружен  ";
+		
+
 	}
 	void ShipTovar(const std::string& name)// Функция огрузки товара по name
 	{

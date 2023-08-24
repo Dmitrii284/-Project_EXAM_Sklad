@@ -72,7 +72,6 @@ public:
 			std::cout << "The product has not been shipped" << std::endl;
 		std::cout << "------------------------------------" << std::endl;
 	}
-
 	float GetWeight() { return m_Weight; }
 
 	int GetId() { return m_Id; }
@@ -82,8 +81,7 @@ public:
 	void SetCell(const std::string& cellName)
 	{
 		m_CellName = cellName;
-	}
-	
+	}	
 };
 
 #endif // !_TOVAR_H_
